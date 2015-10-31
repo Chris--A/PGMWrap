@@ -7,6 +7,12 @@
 
 #include <avr/pgmspace.h>
 
+#if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
+    #ifndef ISCPP11
+        #define ISCPP11
+    #endif
+#endif
+
 #ifndef HEADER_PGMWRAP
     #define HEADER_PGMWRAP
 
@@ -45,7 +51,7 @@ namespace pgmtools{
     template< typename T >
         struct PGMWrap{
 		
-		#if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
+		#ifdef ISCPP11
 			constexpr PGMWrap( const T &in ) : t(in) {}
 		#endif
 		
@@ -62,15 +68,21 @@ namespace pgmtools{
     };
 
     typedef const PGMWrap< char > int8_p;                   //char
+	typedef int8_p char_p;                                  //char
     typedef const PGMWrap< unsigned char > uint8_p;         //unsigned char
     typedef const PGMWrap< int > int16_p;                   //int
     typedef const PGMWrap< unsigned int > uint16_p;         //unsigned int
+	typedef const PGMWrap< char16_t > char16_p;             //char16_t
     typedef const PGMWrap< long > int32_p;                  //long
     typedef const PGMWrap< unsigned long > uint32_p;        //unsigned long
+	#ifdef ISCPP11
+	  typedef const PGMWrap< char32_t > char32_p;           //char32_t
+	#endif
     typedef const PGMWrap< long long > int64_p;             //long long
     typedef const PGMWrap< unsigned long long > uint64_p;   //unsigned long long
     typedef const PGMWrap< bool > bool_p;                   //bool
     typedef const PGMWrap< float > float_p;                 //float
     typedef const PGMWrap< double > double_p;               //double
     typedef const PGMWrap< long double > long_double_p;     //long double
+	typedef const PGMWrap< size_t > size_p;                 //size_t
 #endif
