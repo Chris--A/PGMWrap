@@ -2,8 +2,8 @@
 #include <PGMWrap.h>
 
 //Create a simple array using the PGMWrap type int16_t.
-int16_p pgmval[7] PROGMEM = { //PROGMEM is necessary, it tells the compiler
-   123,                       //that the variable resides in flash memory.
+uint16_p pgmval[7] PROGMEM = { //PROGMEM is necessary, it tells the compiler
+   123,                        //that the variable resides in flash memory.
    456,
    789,
    11111,
