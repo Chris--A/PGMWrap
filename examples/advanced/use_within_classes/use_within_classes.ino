@@ -1,7 +1,7 @@
 #include <PGMWrap.h>
 
 /*
-  PGMWrap datatypes can be used inside classes. For instance
+  PGMWrap data types can be used inside classes. For instance
   allowing user created data to be passed in and used within
   the object.
   
@@ -12,7 +12,10 @@
 
 class Foo{
   public:
-    Foo( int8_p *in, int length ) : userStr(in), len(length) {}
+    Foo( const char *in, int length ){
+      userStr = (char_p*)in;
+      len = length;
+    }
 
     void doStuff(){
 
@@ -22,7 +25,7 @@ class Foo{
       }
     }
   private:
-    int8_p *userStr;  //Pointer to PROGMEM data.
+    char_p *userStr;  //Pointer to PROGMEM data.
     int len;          //Length of data to print.
 };
 
@@ -32,7 +35,7 @@ void setup() {
   Serial.begin(9600);
 
   //Pass in data and length to foo's constructor.
-  Foo foo( (int8_p*) userProvidedData, sizeof(userProvidedData) );
+  Foo foo( userProvidedData, sizeof(userProvidedData) );
 
   //Call the function using the PROGMEM data.
   foo.doStuff();
