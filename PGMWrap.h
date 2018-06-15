@@ -38,7 +38,7 @@ namespace pgmtools{
         }
     };
 
-    template<  typename T >
+    template< typename T >
     struct PGMSingleByte{
         T PGMRead( const PGMWrap<T> *data ){ return pgm_read_byte(data); }
     };
