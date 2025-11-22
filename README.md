@@ -2,7 +2,7 @@
 
 This library makes using PROGMEM simple. You can access flash as if it were located in ram.
 
-**Want the EEPROM version? Check out the equivalent [PGMWrap](https://github.com/Chris--A/EEWrap) library.**
+**Want the EEPROM version? Check out the equivalent [EEWrap](https://github.com/Chris--A/EEWrap) library.**
 
 ## Installation:
 
